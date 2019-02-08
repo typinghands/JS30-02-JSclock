@@ -8,123 +8,102 @@
     <link type="image/png" rel="icon" href="images/myFavicon.png" />
 
     <style type="text/css">
-        html {
-          box-sizing: border-box;
-          font-family: "Open Sans", "Tahoma", sans-serif;
-          color: #ebac30;
-          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-          font-size: 18px;
-        }
+      html {
+        box-sizing: border-box;
+        font-family: "Open Sans", "Tahoma", sans-serif;
+        color: #ebac30;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        font-size: 18px;
+      }
 
-        body {
-          background-color: #bdb9b9;
-          background: #2a4fca; /* fallback for old browsers */
-          background: -webkit-linear-gradient(
-            to right,
-            #1999bd,
-            #13138d
-          ); /* Chrome 10-25, Safari 5.1-6 */
-          background: linear-gradient(
-            to right,
-            #1999bd,
-            #13138d
-          ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      body {
+        background-color: #bdb9b9;
+        background: #2a4fca; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #2d96ff,
+          #13138d
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #2d96ff,
+          #13138d
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background-attachment: fixed;
+      }
 
-          background-attachment: fixed;
-          background-size: cover;
-          background-position: center;
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
 
-          margin: auto;
-          width: 40%;
+      hr {
+        margin: 20px auto;
+        border: 3px rgba(0, 0, 0, 0.1) solid;
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 400px;
+      }
 
-          height: 100%;
-        }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: "Verdana", sans-serif;
+        margin: 5px 0;
+        text-align: center;
+      }
 
-        *,
-        *:before,
-        *:after {
-          box-sizing: inherit;
-        }
+      h1 {
+        font-size: 3rem;
+      }
 
-        hr {
-          margin: 10px;
-          border: 3px rgba(0, 0, 0, 0.1) solid;
-          box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
-          border-radius: 10px;
-        }
+      h2 {
+        font-size: 2rem;
+      }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5 {
-          font-family: "Verdana", sans-serif;
-          margin: 5px 0;
-          text-align: center;
-        }
+      h3 {
+        font-size: 1.7rem;
+      }
 
-        h1 {
-          font-size: 3rem;
-        }
+      h4 {
+        font-size: 1.3rem;
+      }
 
-        h2 {
-          font-size: 2rem;
-        }
+      .sunImage {
+        background: url("images/sun.png") no-repeat center;
+        width: 500px;
+        margin-top: 30px;
+        position: absolute;
+        top: 5vh;
+        left: 60vh;
+      }
 
-        h3 {
-          font-size: 1.7rem;
-        }
+      .hourHand {
+        height: 10px;
+        width: 200px;
 
-        h4 {
-          font-size: 1.3rem;
-        }
+        background: #ff5a00;
+        border: 2px black solid;
+        border-radius: 40px;
 
-        #sunImage {
-          width: 40%;
-          min-width: 300px;
-          margin-top: 30px;
-          position: relative;
+        margin-top: 30px;
 
-        }
+        position: absolute;
+        top: 33vh;
+        left: 66vh;
 
-        .minuteHand {
-      <!--     width: 50%;
-          height: 6px;
-          background: black;
-          position: absolute;
-          top: 50%;
-          transform-origin: 100%;
-          transform: rotate(90deg);
-          transition: all 0.05s;
-          transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1); -->
-        }
-
-        .hourHand {
-          height:10px;
-          width: 15%;
-          min-width: 100px;
-
-          background:white;
-          border: 2px black solid;
-          border-radius: 40px;
-
-          position:absolute;
-          top:50%;
-
-          <!-- transform-origin: 100%; -->
-        }
+        transform-origin: 100%;
+      }
     </style>
   </head>
   <body>
-    <h1>Javascript Clock</h1>
-    <hr />
-    <img src="images/sun.png" alt="background" id="sunImage" />
-
-    <div class="minuteHand"></div>
-    <div class="hourHand"></div>
+    <article class="sunImage"><div class="hourHand"></div></article>
   </body>
   <script>
     const hourHand = document.querySelector(".hourHand");
-    hourHand.style.transform = `rotate(10deg)`;
+    hourHand.style.transform = `rotate(20deg)`;
   </script>
 </html>
