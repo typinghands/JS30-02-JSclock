@@ -72,22 +72,27 @@
         font-size: 1.3rem;
       }
 
+      article {
+        height: 800px;
+
+        border: rgb(209, 89, 89) 2px solid;
+      }
+
       .sunImage {
         background: url("images/sun.png") no-repeat center;
-        border: grey 2px solid;
+        background-size: 300px;
 
-        height: 800px;
-        width: 800px;
+        height: 60%;
 
         position: relative;
-        left: 50%;
+
+        border: grey 2px solid;
       }
 
       .hourHand {
         background: #ff5a00;
         border: 2px black solid;
         border-radius: 40px;
-        border: grey 2px solid;
 
         height: 40%;
         width: 10px;
@@ -101,7 +106,9 @@
     </style>
   </head>
   <body>
-    <article class="sunImage"><div class="hourHand"></div></article>
+    <article>
+      <div class="sunImage"><div class="hourHand"></div></div>
+    </article>
   </body>
   <script>
     const hourHand = document.querySelector(".hourHand");
