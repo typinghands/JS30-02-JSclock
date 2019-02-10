@@ -10,10 +10,7 @@
     <style type="text/css">
       html {
         box-sizing: border-box;
-        font-family: "Open Sans", "Tahoma", sans-serif;
-        color: #ebac30;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-        font-size: 18px;
+        font-size: 2.3vh;
       }
 
       body {
@@ -30,6 +27,13 @@
           #13138d
         ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         background-attachment: fixed;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        min-height: 90vh;
+        min-width: 20rem;
       }
 
       *,
@@ -38,80 +42,103 @@
         box-sizing: inherit;
       }
 
-      hr {
-        margin: 20px auto;
-        border: 3px rgba(0, 0, 0, 0.1) solid;
-        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        width: 400px;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5 {
-        font-family: "Verdana", sans-serif;
-        margin: 5px 0;
-        text-align: center;
-      }
-
-      h1 {
-        font-size: 3rem;
-      }
-
-      h2 {
-        font-size: 2rem;
-      }
-
-      h3 {
-        font-size: 1.7rem;
-      }
-
-      h4 {
-        font-size: 1.3rem;
-      }
-
-      article {
-        height: 800px;
-
-        border: rgb(209, 89, 89) 2px solid;
-      }
-
       .sunImage {
         background: url("images/sun.png") no-repeat center;
-        background-size: 300px;
 
-        height: 60%;
+        background-size: 20rem;
+
+        width: 20rem;
+        height: 20rem;
 
         position: relative;
-
-        border: grey 2px solid;
       }
 
-      .hourHand {
+      .hoursHand {
         background: #ff5a00;
-        border: 2px black solid;
+        border: 0.1rem black solid;
         border-radius: 40px;
 
-        height: 40%;
-        width: 10px;
+        width: 0.4rem;
+        height: 6.5rem;
 
         position: absolute;
-        top: 46%;
-        left: 50%;
+        top: 3.5rem;
+        left: 9.75rem;
 
-        transform-origin: 100%;
+        transform-origin: 100% 100%;
+      }
+
+      .minutesHand {
+        background: #2c92fb;
+        border: 0.1rem black solid;
+        border-radius: 40px;
+
+        width: 0.4rem;
+        height: 8rem;
+
+        position: absolute;
+        top: 2rem;
+        left: 9.7rem;
+
+        transform-origin: 100% 100%;
+      }
+
+      .secondsHand {
+        background: #cec6c2;
+        border: 0.1rem black solid;
+        border-radius: 40px;
+
+        width: 0.3rem;
+        height: 9rem;
+
+        position: absolute;
+        top: 1rem;
+        left: 9.8rem;
+
+        transform-origin: 100% 100%;
+      }
+
+      .middleDot {
+        width: 1.2rem;
+        height: 1.2rem;
+        background-color: #cf9641;
+        border: 0.08rem solid #855611;
+        border-radius: 50%;
+
+        position: absolute;
+        top: 9.5rem;
+        left: 9.35rem;
       }
     </style>
   </head>
   <body>
-    <article>
-      <div class="sunImage"><div class="hourHand"></div></div>
-    </article>
+    <div class="sunImage">
+      <div class="hoursHand"></div>
+      <div class="minutesHand"></div>
+      <div class="secondsHand"></div>
+      <div class="middleDot"></div>
+    </div>
   </body>
   <script>
-    const hourHand = document.querySelector(".hourHand");
-    hourHand.style.transform = `rotate(20deg)`;
+    const hoursHand = document.querySelector(".hoursHand");
+    const minutesHand = document.querySelector(".minutesHand");
+    const secondsHand = document.querySelector(".secondsHand");
+
+    function fnGetTime() {
+      const TimeNow = new Date();
+      const hourNow = TimeNow.getHours();
+      const minuteNow = TimeNow.getMinutes();
+      const secondNow = TimeNow.getSeconds();
+
+      const hourDegrees = (hourNow / 12) * 360 + (minuteNow / 60) * 30;
+      const minuteDegrees = (minuteNow / 60) * 360 + (secondNow / 60) * 6;
+      const secondDegrees = (secondNow / 60) * 360;
+
+      hoursHand.style.transform = `rotate(${hourDegrees - 5}deg)`;
+      minutesHand.style.transform = `rotate(${minuteDegrees}deg)`;
+      secondsHand.style.transform = `rotate(${secondDegrees + 1}deg)`;
+    }
+
+    setInterval(fnGetTime, 1000);
   </script>
 </html>
