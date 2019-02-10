@@ -53,7 +53,7 @@
         position: relative;
       }
 
-      .hourHand {
+      .hoursHand {
         background: #ff5a00;
         border: 0.1rem black solid;
         border-radius: 40px;
@@ -68,8 +68,8 @@
         transform-origin: 100% 100%;
       }
 
-      .minuteHand {
-        background: #cec6c2;
+      .minutesHand {
+        background: #7e4122;
         border: 0.1rem black solid;
         border-radius: 40px;
 
@@ -81,7 +81,6 @@
         left: 9.75rem;
 
         transform-origin: 100% 100%;
-        display: none;
       }
 
       .secondsHand {
@@ -97,7 +96,6 @@
         left: 9.75rem;
 
         transform-origin: 100% 100%;
-        display: none;
       }
 
       .middleDot {
@@ -115,24 +113,33 @@
   </head>
   <body>
     <div class="sunImage">
-      <div class="hourHand"></div>
-      <div class="minuteHand"></div>
+      <div class="hoursHand"></div>
+      <div class="minutesHand"></div>
       <div class="secondsHand"></div>
       <div class="middleDot"></div>
     </div>
   </body>
   <script>
-    const hourHand = document.querySelector(".hourHand");
-    const TimeNow = new Date();
+    const hoursHand = document.querySelector(".hoursHand");
+    const minutesHand = document.querySelector(".minutesHand");
+    const secondsHand = document.querySelector(".secondsHand");
 
-    const hourNow = TimeNow.getHours();
+    function fnGetTime() {
+      const TimeNow = new Date();
+      const hourNow = TimeNow.getHours();
+      const minuteNow = TimeNow.getMinutes();
+      const secondNow = TimeNow.getSeconds();
 
-    let counter = 0;
-    function fnexample() {
-      hourHand.style.transform = `rotate( ${counter}deg)`;
-      counter += 90;
+      const hourDegrees = (hourNow / 12) * 360 + (minuteNow / 60) * 30;
+      const minuteDegrees = (minuteNow / 60) * 360 + (secondNow / 60) * 6;
+      const secondDegrees = (secondNow / 60) * 360;
+
+      hoursHand.style.transform = `rotate(${hourDegrees - 5}deg)`;
+      minutesHand.style.transform = `rotate(${minuteDegrees}deg)`;
+      secondsHand.style.transform = `rotate(${secondDegrees + 1}deg)`;
+      console.log(hourNow, minuteNow, secondNow);
     }
 
-    setInterval(fnexample, 1000);
+    setInterval(fnGetTime, 1000);
   </script>
 </html>
